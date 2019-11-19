@@ -6,10 +6,10 @@ We are building a dashboard that will show you where you can find a specific job
 * Web-scraping from LinkedIn
 * https://www.kaggle.com/goldenoakresearch/us-acs-mortgage-equity-loans-rent-statistics
 
-## Initial Project Skecth/Inspirations:
+## Initial Project Sketches/Inspirations:
 
-!(/Intital_sketch/p1.jpeg)
-!(/Intital_sketch/p2.jpeg)
-!(/Intital_sketch/p3.jpeg)
+![Home Page](/Intital_sketch/p1.jpeg)
+![Leaflet Visual](/Intital_sketch/p2.jpeg)
+![Tableau Dashboard](/Intital_sketch/p3.jpeg)
 
 
