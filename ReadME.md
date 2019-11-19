@@ -8,8 +8,8 @@ We are building a dashboard that will show you where you can find a specific job
 
 ## Initial Project Sketches/Inspirations:
 
-* [Home Page](/Intital_sketch/p1.jpeg)
-* [Leaflet Visual](/Intital_sketch/p2.jpeg)
-* [Tableau Dashboard](/Intital_sketch/p3.jpeg)
+![](https://github.com/tkabdelaziz/project-dashboards/blob/master/Initial_sketch/pg1.jpeg)
+![Leaflet Visual](https://github.com/tkabdelaziz/project-dashboards/blob/master/Initial_sketch/pg2.jpeg)
+![Tableau Dashboard](https://github.com/tkabdelaziz/project-dashboards/blob/master/Initial_sketch/pg3.jpeg)
 
 
