@@ -1,4 +1,9 @@
 
+# coding: utf-8
+
+# In[1]:
+
+
 # Dependencies
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
@@ -7,14 +12,25 @@ import pymongo
 import pandas as pd
 import time
 
+
+# In[2]:
+
+
 # Initialize PyMongo to work with MongoDBs
-prod_conn = 'mongodb://heroku_pxmzqrg2:dpp5l24mlb4lqetj4q96d62cjb@ds339968.mlab.com:39968/heroku_pxmzqrg2'
-local_conn = 'mongodb://localhost:27017'
-client = pymongo.MongoClient(local_conn)
+# prod_conn = 'mongodb://heroku_pxmzqrg2:dpp5l24mlb4lqetj4q96d62cjb@ds339968.mlab.com:39968/heroku_pxmzqrg2?retryWrites=false'
+# local_conn = 'mongodb://localhost:27017'
+# client = pymongo.MongoClient(prod_conn)
+
+
+# In[3]:
+
 
 # Define database and collection
-db = client.job_db
-collection = db.listing_summary
+# db = client.heroku_pxmzqrg2
+# collection = db.listing_summary
+
+
+# In[16]:
 
 
 #trying Splinter
@@ -23,16 +39,18 @@ def init_browser():
     return Browser('chrome', **executable_path, headless=False)
 
 
-def scrape_info():
-    browser = init_browser()
-    
-    #job titles to be scraped
-    titles = ["data+engineer","software+engineer","business+analyst"]
+# In[27]:
 
-    for title in titles:    
+def scrape_info():
+    titles = ['Data Engineer', 'Business Analyst','Software Engineer']
+    postings = []
+    
+    for title in titles:
+        browser = init_browser()
         url = 'https://www.indeed.com/jobs?q={}&l='.format(title)
         browser.visit(url)
         browser.is_text_present('Indeed', wait_time=10)
+        
 
         html = browser.html
         soup = bs(html, 'html.parser')
@@ -80,41 +98,45 @@ def scrape_info():
             # Run only if title, price, and link are available
             if (salary and jobtype and location and company and experience):
             # Print results
-                print('-------------')
-                print(salarieslist)
-                print(salariescount)
-                print(jobtypelist)
-                print(jobtypecount)
-                print(locationlist)
-                print(locationcount)
-                print(companylist)
-                print(companycount)
-                print(experiencelist)
-                print(experiencecount)
+#                 print('-------------')
+#                 print(salarieslist)
+#                 print(salariescount)
+#                 print(jobtypelist)
+#                 print(jobtypecount)
+#                 print(locationlist)
+#                 print(locationcount)
+#                 print(companylist)
+#                 print(companycount)
+#                 print(experiencelist)
+#                 print(experiencecount)
 
             # Dictionary to be inserted as a MongoDB document
                 post ={
                    'title': title,
                    'company': companylist,
-                    'company count':companycount,
+                    'company_count':companycount,
                    'salary': salarieslist,
-                    'salary count': salariescount,
+                    'salary_count': salariescount,
                     'location': locationlist,
-                    'location count': locationcount,
+                    'location_count': locationcount,
                     'jobtype':jobtypelist,
-                    'jobtype count': jobtypecount,
-                    'experience level': experiencelist,
-                    'experience count':experiencecount
+                    'jobtype_count': jobtypecount,
+                    'experience_level': experiencelist,
+                    'experience_count':experiencecount
                     }
-                collection.insert_one(post)
-
+                postings.append(post)
+            
         except Exception as e:
             print("{}: {}".format(type(e), str(e)))
-            
-        # Close the browser after scraping
+        
+        #close browser after scraping
         browser.quit()
         
-        return post 
-        
-    
+    return postings
+
+
+# In[28]:
+
+
+
 
