@@ -43,6 +43,7 @@ def init_browser():
 
 def scrape_info():
     titles = ['Data Engineer', 'Business Analyst','Software Engineer']
+    # titles = ['Data Engineer'] # for testing
     postings = []
     
     for title in titles:
