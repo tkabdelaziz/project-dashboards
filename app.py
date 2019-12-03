@@ -7,11 +7,8 @@ import csv
 app = Flask(__name__)
 
 # Use PyMongo to establish Mongo connection
-# mongo = PyMongo(app, uri="mongodb://heroku_pxmzqrg2:dpp5l24mlb4lqetj4q96d62cjb@ds339968.mlab.com:39968/heroku_pxmzqrg2?retryWrites=false")
-try:
-    mongo = PyMongo(app, uri="mongodb://localhost:27017/indeed_app")
-except Exception as e:
-    print("Error Here: {}".format(str(e)))
+mongo = PyMongo(app, uri="mongodb://heroku_pxmzqrg2:dpp5l24mlb4lqetj4q96d62cjb@ds339968.mlab.com:39968/heroku_pxmzqrg2?retryWrites=false")
+# mongo = PyMongo(app, uri="mongodb://localhost:27017/indeed_app")
 
 # Route to render index.html template using data from Mongo
 @app.route("/")
