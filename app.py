@@ -8,7 +8,7 @@ import os
 app = Flask(__name__)
 
 # Use PyMongo to establish Mongo connection
-mongo_uri = os.environ.get(('MONGODB_URI') or "mongodb://localhost:27017/")
+mongo_uri = os.getenv('MONGODB_URI', "mongodb://localhost:27017/")
 mongo = PyMongo(app, uri=mongo_uri)
 #mongo = PyMongo(app, uri="mongodb://heroku_qx3g49ns:9u9s6p6efv061gkebdtp68ckoi@ds053597.mlab.com:53597/heroku_qx3g49ns")
 
