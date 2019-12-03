@@ -35,7 +35,7 @@ import time
 
 #trying Splinter
 def init_browser():
-    executable_path = {"executable_path": "chromedriver"}
+    executable_path = {"executable_path": "/app/chromedriver"}
     return Browser('chrome', **executable_path, headless=False)
 
 
